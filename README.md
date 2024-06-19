@@ -151,11 +151,11 @@ $$
 
 Batching 1024 proofs using Aligned’s fast mode can cost around 2,100 gas in Ethereum (for a gas price of 8 gwei/gas and ETH = $3000, $0.05). As a helpful comparison, a transaction in Ethereum costs 21,000 gas, so you get proof verification for 1/10th of the transaction cost!
 
-### Why do you have a fast and slow mode?
+#### Why do you have a fast and slow mode?
 
 The fast mode is designed to offer very cheap verification costs and low latency. It uses crypto-economic guarantees provided by restaking; costs can be as low as 2100 gas. The slow mode works with proof aggregation, with higher fees and latency, and achieves the complete security of Ethereum. We verify an aggregated BLS signature (around 113,000 gas) in the fast mode. We verify an aggregated proof (around 300,000 gas) in the slow mode.
 
-### Why don’t you run Aligned on top of a virtual machine?
+#### Why don’t you run Aligned on top of a virtual machine?
 
 Running on a virtual machine adds complexity to the system and an additional abstraction layer. It can also reduce Aligned's throughput, which is needed to offer really fast and cheap verification.
 
@@ -179,7 +179,7 @@ Maybe we want faster proving and don't care about proof size. Maybe we want the 
 
 Aligned solves all of this. No matter how or what you want to prove, it can be verified efficiently here while still inheriting the security of Ethereum as other L2s.
 
-### Is Aligned an aggregation layer?
+#### Is Aligned an aggregation layer?
 
 Aligned provides proof aggregation as part of its slow mode, a feature shared with all aggregation layers. However, Aligned offers a unique fast mode designed to provide cheap and low-latency proof verification, leveraging the power of restaking. Aligned is a decentralized network designed to verify zero-knowledge proofs and uses recursive proof aggregation as one of its tools.
 
@@ -187,15 +187,15 @@ Aligned provides proof aggregation as part of its slow mode, a feature shared wi
 
 Aligned is designed to support any proof system. Currently supported ones are Groth 16 and Plonk (gnark), SP1, Halo 2 (IPA and KZG)
 
-### How hard is it to add new proof systems?
+#### How hard is it to add new proof systems?
 
 Aligned is designed to make adding new proof systems easy. The only thing needed is the verifier function, which is written in a high-level language like Rust. For example, we could integrate Jolt into one of our testnets just a few hours after it was released.
 
-### What are BLS signatures?
+#### What are BLS signatures?
 
 [Boneh-Lynn-Shacham](https://en.wikipedia.org/wiki/BLS_digital_signature) is a cryptographic signature that allows a user to verify that a signer is authentic. It relies on elliptic curve pairings and is used by Ethereum due to its aggregation properties.
 
-### How does Aligned work?
+#### How does Aligned work?
 
 The flow for fast verification is as follows:
 
@@ -207,15 +207,15 @@ The flow for fast verification is as follows:
 6. The signature aggregator accumulates the signed responses until reaching the quorum, then sends the aggregated signature to Ethereum.
 7. Ethereum verifies the aggregated signatures and changes the state of the batch to verified.
 
-### What is restaking?
+#### What is restaking?
 
 EigenLayer introduced the concept of Restaking. It allows Ethereum’s validators to impose additional slashing conditions on their staked ETH to participate in Actively Validated Services (AVS) and earn additional rewards. This creates a marketplace where applications can rent Ethereum's trust without competing for blockspace. Aligned is an example of an AVS.
 
-### How can I verify proofs in Aligned?
+#### How can I verify proofs in Aligned?
 
 You can verify proofs in Aligned using our CLI.
 
-### Can you provide an estimate of Aligned’s savings?
+#### Can you provide an estimate of Aligned’s savings?
 
 In Ethereum (does not include access cost):
 
@@ -235,11 +235,11 @@ It’s over 99% savings!
 
 Yes!
 
-### Is Aligned open-source?
+##### Is Aligned open-source?
 
 Yes!
 
-### What are the goals of Aligned?
+#### What are the goals of Aligned?
 
 Aligned is an infrastructure that offers fast and cheap verification for zero-knowledge and validity proofs. It can take any proof system and verify it cheaply and fast.
 
@@ -249,11 +249,11 @@ This means that what Aligned wants to achieve is to allow anyone to build zk app
 - Offering more options so developers can choose how they want to build their protocols -> everyone can choose their tools.
 - Offer the latest zk that allows anyone to build zk applications by just proving rust -> anyone can code a zk application.
 
-### What’s the role of Aligned in Ethereum?
+#### What’s the role of Aligned in Ethereum?
 
 Aligned’s role is to help advance the adoption of zero-knowledge proofs in Ethereum, increase verification throughput, and reduce on-chain verification time and costs. Aligned can easily incorporate proof systems without any further changes in Ethereum. In a more straightforward analogy, Aligned is like a GPU for Ethereum.
 
-### What is proof recursion?
+#### What is proof recursion?
 
 Zero-knowledge proofs let you generate proofs that show the correct execution of programs. If a program is the verification of a proof, then we will be getting a proof that we verified the proof and the result was valid. The validity of the second proof implies the validity of the original proof. This is the idea behind proof recursion, and it can be used with two main goals:
 
@@ -262,7 +262,7 @@ Zero-knowledge proofs let you generate proofs that show the correct execution of
 
 Proof recursion is the primary tool of Aligned’s slow mode.
 
-### What are the use cases of Aligned?
+#### What are the use cases of Aligned?
 
 Among the possible use cases of Aligned, we have:
 
@@ -272,7 +272,7 @@ Soft finality for Rollups and Appchains, fast bridging, new settlement layers (u
 
 Ethereum is the most decentralized and most significant source of liquidity in the crypto ecosystem. We believe it is the most ambitious and long-term project on the internet. Aligned is being built to help Ethereum achieve its highest potential, and we believe this is only possible through validity/zero-knowledge proofs.
 
-### Why EigenLayer?
+#### Why EigenLayer?
 
 We believe Ethereum is the best settlement layer, and zero-knowledge will play a key role in helping it become the settlement layer of the internet. We want to build a verification layer that helps Ethereum achieve this goal. This layer needs to have a decentralized group of validators that will just re-execute the verification of different proofs, but how can we build such a decentralized network that will help Ethereum? Creating a new L1 doesn’t benefit Ethereum because it will add new trust assumptions to the Ethereum protocols relying on it. So, if we must have:
 1. A decentralized network of verifiers
@@ -280,7 +280,7 @@ We believe Ethereum is the best settlement layer, and zero-knowledge will play a
 3. Part of the Ethereum ecosystem
 4. Flexible enough to support many current and future proving systems
 
-### How does it compare to the Polygon aggregation layer?
+#### How does it compare to the Polygon aggregation layer?
 
 Aligned is just a network of decentralized verifiers renting security from Ethereum. On the other hand, the Polygon aggregation layer, in essence, is a rollup verifying multiple proofs. That is not the case for Aligned, which just executes a rust binary from different verifiers directly in multiple Ethereum validators.
 
